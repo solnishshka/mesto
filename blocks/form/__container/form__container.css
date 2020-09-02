@@ -1,0 +1,10 @@
+.form__container {
+    max-width: 430px;
+    width: 100%;
+    background-color: #FFFFFF;
+    position: fixed;
+    -moz-box-sizing: border-box;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+}
