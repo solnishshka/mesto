@@ -11,4 +11,18 @@
     height: 50px;
     align-self: center;
     margin-left: auto;
+    background-image: url(../../../images/add-button.svg);
+}
+
+.profile__add-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    .profile__add-button {
+        width: 282px;
+        margin: 0 auto;
+        background-image: url(../../../images/add-button-small.svg);
+    }
 }
