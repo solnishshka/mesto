@@ -1,4 +1,8 @@
 .element__title {
     color: black;
     margin: 25px auto auto 21px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 186px;
 }
