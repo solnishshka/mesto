@@ -4,8 +4,6 @@ const popup = document.querySelector('.popup');
 const closeButton = document.querySelector('.popup__close-button');
 let formElement = document.querySelector('.form');
 
-console.log(allPage);
-
 const popupTogle = function() {
     popup.classList.toggle('popup_opened');
     allPage.classList.toggle('page_js-overflow');
