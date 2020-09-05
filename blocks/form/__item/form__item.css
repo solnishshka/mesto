@@ -8,5 +8,5 @@
 }
 
 .form__item:focus {
-    outline: none !important;
+    outline: none;
 }
