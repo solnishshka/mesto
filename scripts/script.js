@@ -9,14 +9,12 @@ let profileTitle = profile.querySelector('.profile__title');
 let profileSubtitle = profile.querySelector('.profile__subtitle');
 
 const popupToggle = function() {
-    if (popup.classList.contains('popup_opened')) {
-        popup.classList.remove('popup_opened');
-    }
-    else {
-        popup.classList.add('popup_opened');
+    if (!popup.classList.contains('popup_opened')) {
         nameInput.value = profileTitle.textContent;
         jobInput.value = profileSubtitle.textContent;
-    }    
+    }
+    
+    popup.classList.toggle('popup_opened');
 }
 
 editButton.addEventListener('click', popupToggle);
