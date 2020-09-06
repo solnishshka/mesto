@@ -3,7 +3,16 @@
     height: 50px;
     align-self: center;
     margin-left: auto;
-    background-image: url(../../../images/add-button.svg);
+    background-image: url(../../../images/addButton.svg);
+    background-color: transparent;
+    background-position: center;
+    background-size: 22px;
+    background-repeat: no-repeat;
+    border: none;
+    outline: none;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
 }
 
 .profile__add-button:hover {
@@ -15,7 +24,7 @@
     .profile__add-button {
         width: 282px;
         margin: 0 auto;
-        background-image: url(../../../images/add-button-small.svg);
         margin-top: 36px;
+        background-size: 16px;
     }
 }

@@ -5,51 +5,50 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./pages/index.css">
         <meta name="author" content="Solnishshka">
-        <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
         <title>Mesto - узнайте больше о самых красивых уголках планеты</title> 
     </head>
     <body class="page">
         <div class="page__container">
             <header class="header">
-                <img src="./images/logo.svg" alt="" class="header__logo">
-                <img src="./images/line.png" alt="" class="header__line">
+                <img src="./images/logo.svg" alt="Логотип сервиса Место" class="header__logo">
             </header>
 
             <main class="content">
                 <section class="profile">
-                    <img src="./images/element-image.svg" alt="" class="profile__avatar">
+                    <img src="./images/profile_image.jpg" alt="Логотип профиля" class="profile__avatar">
                     <div class="profile__profile-info">
                         <div class="profile__title-item">
                             <h1 class="profile__title">Жак-Ив Кусто</h1>
-                            <img src="./images/EditButton.svg" alt="" class="profile__edit-button">
+                            <button class="profile__edit-button" type="button"></button>
                         </div>
                         <p class="profile__subtitle">Исследователь океана</p>
                     </div>
-                    <div class="profile__add-button"></div>
+                    <button class="profile__add-button" type="button"></button>
                 </section>
 
                 <section class="elements">
                     <div class="element">
-                        <img src="./images/Karachaevsk.png" alt="Фотография Карачаевска" class="element__image">
+                        <img src="./images/Bronnitsy.jpeg" alt="Фотография Карачаевска" class="element__image">
                         <div class="element__title-item">
-                            <h2 class="element__title">Карачаевск</h2>
-                            <img src="./images/heart-image.svg" alt="" class="element__heart-image">
+                            <h2 class="element__title">Бронницы</h2>
+                            <button class="element__like-button" type="button"></button>
                         </div>
                     </div>
 
                     <div class="element">
-                        <img src="./images/Elbrus.png" alt="Фотография Эльбруса" class="element__image">
+                        <img src="./images/Elbrus.jpg" alt="Фотография Эльбруса" class="element__image">
                         <div class="element__title-item">
                             <h2 class="element__title">Гора Эльбрус</h2>
-                            <img src="./images/heart-image.svg" alt="" class="element__heart-image">
+                            <button class="element__like-button" type="button"></button>
                         </div>
                     </div>
 
                     <div class="element">
-                        <img src="./images/Dombai.svg" alt="Фотограция Домбая" class="element__image">
+                        <img src="./images/Dombai.jpg" alt="Фотограция Домбая" class="element__image">
                         <div class="element__title-item">
                             <h2 class="element__title">Домбай</h2>
-                            <img src="./images/heart-image.svg" alt="" class="element__heart-image">
+                            <button class="element__like-button" type="button"></button>
                         </div>
                     </div>
 
@@ -57,7 +56,7 @@
                         <img src="./images/roza_pik.JPG" alt="Роза Пик" class="element__image">
                         <div class="element__title-item">
                             <h2 class="element__title">Роза Пик</h2>
-                            <img src="./images/heart-image.svg" alt="" class="element__heart-image">
+                            <button class="element__like-button" type="button"></button>
                         </div>
                     </div>
 
@@ -65,7 +64,7 @@
                         <img src="./images/chvijepse.jpg" alt="Река Чвижепсе" class="element__image">
                         <div class="element__title-item">
                             <h2 class="element__title">Река Чвижепсе</h2>
-                            <img src="./images/heart-image.svg" alt="" class="element__heart-image">
+                            <button class="element__like-button" type="button"></button>
                         </div>
                     </div>
 
@@ -73,27 +72,27 @@
                         <img src="./images/tula.jpeg" alt="Фотография Тульской области" class="element__image">
                         <div class="element__title-item">
                             <h2 class="element__title">Тульская область</h2>
-                            <img src="./images/heart-image.svg" alt="" class="element__heart-image">
+                            <button class="element__like-button" type="button"></button>
                         </div>
                     </div>
                 </section>
             </main>
 
-            <section class="popup">
-                <div class="popup__container">
-                    <img src="./images/CloseIcon.svg" alt="" class="popup__close-button">
-                    <form class="form">
-                        <h2 class="form__title">Редактировать профиль</h2>
-                        <input type="text" value="Жак-Ив Кусто" placeholder="Имя" class="form__item form__item_el_name">
-                        <input type="text" value="Исследователь океана" placeholder="О себе" class="form__item form__item_el_position">
-                        <input type="submit" class="form__submit-button" value="Сохранить">
-                    </form>
-                </div>
-            </section>
-
             <footer class="footer">
                 <p class="footer__copyright">© 2020 Mesto Russia</p>
             </footer>
+
+            <div class="popup">
+                <div class="popup__container">
+                    <button class="popup__close-button" type="button"></button>
+                    <form class="form" name="saveForm">
+                        <h2 class="form__title">Редактировать профиль</h2>
+                        <input type="text" name="userName" placeholder="Имя" class="form__item form__item_el_name">
+                        <input type="text" name="userJob" placeholder="О себе" class="form__item form__item_el_position">
+                        <button type="submit" class="form__submit-button">Сохранить</button>
+                    </form>
+                </div>
+            </div>
         </div>
 
         <script src="./scripts/script.js"></script>

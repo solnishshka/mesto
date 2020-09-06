@@ -6,9 +6,17 @@
     color: white;
     font-size: 18px;
     line-height: 1.22;
+    border: none;
+    outline: none;
 }
 
 .form__submit-button:hover {
     cursor: pointer;
     opacity: 0.8;
+}
+
+@media screen and (max-width: 700px) {
+    .form__submit-button {
+        font-size: 16px;
+    }
 }
