@@ -1,7 +1,11 @@
 const profile = document.querySelector('.profile');
 const editButton = profile.querySelector('.profile__edit-button');
+const addButton = profile.querySelector('.profile__add-button');
 const popup = document.querySelector('.popup');
-const closeButton = popup.querySelector('.popup__close-button');
+const popupProfile = document.querySelector('.popup_form_profile');
+const popupCard = document.querySelector('.popup_form_card');
+const closeButtonProfile = popupProfile.querySelector('.popup__close-button');
+const closeButtonCard = popupCard.querySelector('.popup__close-button');
 const cardContainer = document.querySelector('.elements');
 let formElement = popup.querySelector('.form');
 let nameInput = formElement.querySelector('.form__item_el_name');
@@ -48,17 +52,34 @@ function addCard(name, link) {
 
 initialCards.forEach(item => addCard(item.name, item.link));
 
-const popupToggle = function() {
-    if (!popup.classList.contains('popup_opened')) {
-        nameInput.value = profileTitle.textContent;
-        jobInput.value = profileSubtitle.textContent;
+const popupToggle = function(evt) {
+    if (evt.target === editButton) {
+        if (!popupProfile.classList.contains('popup_opened')) {
+            nameInput.value = profileTitle.textContent;
+            jobInput.value = profileSubtitle.textContent;    
+        }
+
+        popupProfile.classList.toggle('popup_opened');
     }
-    
-    popup.classList.toggle('popup_opened');
+
+    else if (evt.target === addButton) {
+        popupCard.classList.toggle('popup_opened');
+    } 
+
+    else if (evt.target === closeButtonProfile) {
+        popupProfile.classList.toggle('popup_opened');
+    }
+    else if (evt.target === closeButtonCard) {
+        popupCard.classList.toggle('popup_opened');
+    }
 }
 
 editButton.addEventListener('click', popupToggle);
-closeButton.addEventListener('click', popupToggle);
+addButton.addEventListener('click', popupToggle);
+
+closeButtonProfile.addEventListener('click', popupToggle);
+closeButtonCard.addEventListener('click', popupToggle);
+
 
 function formSubmitHandler (evt) {
     evt.preventDefault();
