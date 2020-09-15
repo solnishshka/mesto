@@ -57,6 +57,13 @@ function initialCard(name, link) {
         eventTarget.classList.toggle('element__like-button_liked');
       });
 
+    
+    cardElement.querySelector('.element__delete-button').addEventListener('click', function (evt) {
+        const cardItem = evt.target.closest('.element');
+
+        cardItem.remove();
+    });
+
     cardContainer.prepend(cardElement);
 }
 
@@ -114,3 +121,13 @@ function formSubmitHandler (evt) {
 
 formElementProfile.addEventListener('submit', formSubmitHandler);
 formElementCard.addEventListener('submit', formSubmitHandler);
+
+
+const deleteButton = document.querySelector('.element__delete-button');
+
+
+deleteButton.addEventListener('click', function (evt) {
+    const cardItem = deleteButton.closest('.element');
+
+    cardItem.remove();
+});
