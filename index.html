@@ -28,7 +28,7 @@
                 </section>
 
                 <section class="elements">
-                    <div class="element">
+                    <!-- <div class="element">
                         <img src="./images/Bronnitsy.jpeg" alt="Фотография Карачаевска" class="element__image">
                         <div class="element__title-item">
                             <h2 class="element__title">Бронницы</h2>
@@ -74,7 +74,7 @@
                             <h2 class="element__title">Тульская область</h2>
                             <button class="element__like-button" type="button" aria-label="Нравится"></button>
                         </div>
-                    </div>
+                    </div> -->
                 </section>
             </main>
 
@@ -91,9 +91,19 @@
                         <input type="text" name="userJob" placeholder="О себе" class="form__item form__item_el_position" required>
                         <button type="submit" class="form__submit-button">Сохранить</button>
                     </form>
-                </div>
+                </div> 
             </div>
         </div>
+
+        <template id="card">
+            <div class="element">
+                <img class="element__image">
+                <div class="element__title-item">
+                    <h2 class="element__title"></h2>
+                    <button class="element__like-button" type="button" aria-label="Нравится"></button>
+                </div>
+            </div>
+        </template>
 
         <script src="./scripts/script.js"></script>
     </body>
