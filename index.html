@@ -28,53 +28,6 @@
                 </section>
 
                 <section class="elements">
-                    <!-- <div class="element">
-                        <img src="./images/Bronnitsy.jpeg" alt="Фотография Карачаевска" class="element__image">
-                        <div class="element__title-item">
-                            <h2 class="element__title">Бронницы</h2>
-                            <button class="element__like-button" type="button" aria-label="Нравится"></button>
-                        </div>
-                    </div>
-
-                    <div class="element">
-                        <img src="./images/Elbrus.jpg" alt="Фотография Эльбруса" class="element__image">
-                        <div class="element__title-item">
-                            <h2 class="element__title">Гора Эльбрус</h2>
-                            <button class="element__like-button" type="button" aria-label="Нравится"></button>
-                        </div>
-                    </div>
-
-                    <div class="element">
-                        <img src="./images/Dombai.jpg" alt="Фотография Домбая" class="element__image">
-                        <div class="element__title-item">
-                            <h2 class="element__title">Домбай</h2>
-                            <button class="element__like-button" type="button" aria-label="Нравится"></button>
-                        </div>
-                    </div>
-
-                    <div class="element">
-                        <img src="./images/roza_pik.JPG" alt="Роза Пик" class="element__image">
-                        <div class="element__title-item">
-                            <h2 class="element__title">Роза Пик</h2>
-                            <button class="element__like-button" type="button" aria-label="Нравится"></button>
-                        </div>
-                    </div>
-
-                    <div class="element">
-                        <img src="./images/chvijepse.jpg" alt="Река Чвижепсе" class="element__image">
-                        <div class="element__title-item">
-                            <h2 class="element__title">Река Чвижепсе</h2>
-                            <button class="element__like-button" type="button" aria-label="Нравится"></button>
-                        </div>
-                    </div>
-
-                    <div class="element">
-                        <img src="./images/tula.jpeg" alt="Фотография Тульской области" class="element__image">
-                        <div class="element__title-item">
-                            <h2 class="element__title">Тульская область</h2>
-                            <button class="element__like-button" type="button" aria-label="Нравится"></button>
-                        </div>
-                    </div> -->
                 </section>
             </main>
 
@@ -82,8 +35,8 @@
                 <p class="footer__copyright">© 2020 Mesto Russia</p>
             </footer>
 
-            <div class="popup popup_form_profile">
-                <div class="popup__container">
+            <div class="popup popup_theme_edit-profile">
+                <div class="popup__container popup__container_theme_edit-profile">
                     <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
                     <form class="form" name="saveForm">
                         <h2 class="form__title">Редактировать профиль</h2>
@@ -94,15 +47,21 @@
                 </div> 
             </div>
 
-            <div class="popup popup_form_card">
-                <div class="popup__container">
+            <div class="popup popup_theme_add-card">
+                <div class="popup__container popup__container_theme_add-card">
                     <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
                     <form class="form" name="saveForm">
                         <h2 class="form__title">Новое место</h2>
                         <input type="text" name="cardTitle" placeholder="Название места" class="form__item form__item_el_title" required>
                         <input type="text" name="cardLink" placeholder="Ссылка на картинку" class="form__item form__item_el_link" required>
-                        <button type="submit" class="form__submit-button">Сохранить</button>
+                        <button type="submit" class="form__submit-button">Создать</button>
                     </form>
+                </div> 
+            </div>
+
+            <div class="popup popup_theme_preview-image">
+                <div class="popup__container popup__container_theme_preview-image">
+                    <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
                 </div> 
             </div>
         </div>
@@ -110,11 +69,19 @@
         <template id="card">
             <div class="element">
                 <img class="element__image">
+                <button class="element__delete-button" type="button" aria-label="Удалить"></button>
                 <div class="element__title-item">
                     <h2 class="element__title"></h2>
                     <button class="element__like-button" type="button" aria-label="Нравится"></button>
                 </div>
             </div>
+        </template>
+
+        <template id="preview-image">
+            <figure class="popup__figure">
+                <img class="popup__image">
+                <figcaption class="popup__capture"></figcaption> 
+            </figure>
         </template>
 
         <script src="./scripts/script.js"></script>

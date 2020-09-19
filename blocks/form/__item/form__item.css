@@ -5,14 +5,13 @@
     font-size: 14px;
     line-height: 1.21;
     padding-top: 38px;
-}
-
-.form__item:focus {
     outline: none;
+    outline-offset: 0;
 }
 
 @media screen and (max-width: 700px) {
     .form__item {
         font-size: 12px;
+        padding-top: 30px;
     }
 }
