@@ -98,6 +98,30 @@ function handleSubmitCard (evt) {
     cardLink.value = "";
 }
 
+function closePopupClickOverlay (evt) {
+    if (evt.target !== evt.currentTarget) {
+        return
+      }
+
+    closePopup(evt.target);
+}
+
+function closePopupPressEscape (evt) {
+    if (evt.key === 'Escape' && document.querySelector('.popup_opened') !== null) {
+        switch (document.querySelector('.popup_opened')) {
+            case popupPreview :
+                closePopup(popupPreview);
+                break;
+            case popupProfile :
+                closePopup(popupProfile);
+                break;
+            case popupCard :
+                closePopup(popupCard);
+                break;
+        }
+    }
+}
+
 renderCards();
 
 editButton.addEventListener('click', function () {
@@ -128,3 +152,9 @@ closeButtonPreview.addEventListener('click', function () {
 
 formElementProfile.addEventListener('submit', handleSubmitProfile);
 formElementCard.addEventListener('submit', handleSubmitCard);
+
+popupPreview.addEventListener('click', closePopupClickOverlay);
+popupProfile.addEventListener('click', closePopupClickOverlay);
+popupCard.addEventListener('click', closePopupClickOverlay);
+
+document.addEventListener('keydown', closePopupPressEscape);
