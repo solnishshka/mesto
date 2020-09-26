@@ -22,7 +22,6 @@ const cardLink = formElementCard.querySelector('.form__item_el_link');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
-const previewTemplate = document.querySelector('#preview-image').content;
 const cardTemplate = document.querySelector('#card').content;
 
 function handleLikeIcon (evt) {
@@ -34,15 +33,12 @@ function deleteCard (evt) {
 }
 
 function openPreview(name, link) {
-    if (previewContainer.querySelector('.popup__figure') !== null) previewContainer.querySelector('.popup__figure').remove();
-    const previewElement = previewTemplate.cloneNode(true);
-    const popupImage = previewElement.querySelector('.popup__image');
+    const popupImage = popupPreview.querySelector('.popup__image');
+    const popupCapture = popupPreview.querySelector('.popup__capture');
 
     popupImage.src = link;
     popupImage.alt = 'Фотография местности: ' + name;
-    previewElement.querySelector('.popup__capture').textContent = name;
-
-    previewContainer.append(previewElement);
+    popupCapture.textContent = name;
 
     openPopup(popupPreview);
 }
