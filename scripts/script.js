@@ -22,6 +22,8 @@ const cardLink = formElementCard.querySelector('.form__item_el_link');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
 
+const cardTemplate = document.querySelector('#card').content;
+
 function handleLikeIcon (evt) {
     evt.target.classList.toggle('element__like-button_liked');
   }
@@ -31,22 +33,17 @@ function deleteCard (evt) {
 }
 
 function openPreview(name, link) {
-    if (previewContainer.querySelector('.popup__figure') !== null) previewContainer.querySelector('.popup__figure').remove();
-    const previewTemplate = document.querySelector('#preview-image').content;
-    const previewElement = previewTemplate.cloneNode(true);
-    const popupImage = previewElement.querySelector('.popup__image');
+    const popupImage = popupPreview.querySelector('.popup__image');
+    const popupCapture = popupPreview.querySelector('.popup__capture');
 
     popupImage.src = link;
     popupImage.alt = 'Фотография местности: ' + name;
-    previewElement.querySelector('.popup__capture').textContent = name;
-
-    previewContainer.append(previewElement);
+    popupCapture.textContent = name;
 
     openPopup(popupPreview);
 }
 
 function createNewCard(name, link) {
-    const cardTemplate = document.querySelector('#card').content;
     const cardElement = cardTemplate.cloneNode(true);
     const cardImage = cardElement.querySelector('.element__image');
 
@@ -77,6 +74,7 @@ function openPopup (popupName) {
 
 function closePopup (popupName) {
     popupName.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePopupPressEscape);
 }
 
 function handleSubmitProfile (evt) {
@@ -124,8 +122,6 @@ function closePopupPressEscape (evt) {
                 closePopup(popupPreview);
                 break;
         }
-        
-        document.removeEventListener('keydown', closePopupPressEscape);
     }
 }
 
