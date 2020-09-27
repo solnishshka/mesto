@@ -10,7 +10,6 @@ const closeButtonCard = popupCard.querySelector('.popup__close-button');
 const closeButtonPreview = popupPreview.querySelector('.popup__close-button');
 
 const cardContainer = document.querySelector('.elements');
-const previewContainer = document.querySelector('.popup__container_theme_preview-image');
 
 const formElementProfile = popupProfile.querySelector('.form');
 const formElementCard = popupCard.querySelector('.form');
