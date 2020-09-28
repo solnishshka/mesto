@@ -23,6 +23,9 @@ const profileSubtitle = document.querySelector(".profile__subtitle");
 
 const cardTemplate = document.querySelector("#card").content;
 
+const popupImage = popupPreview.querySelector(".popup__image");
+const popupCapture = popupPreview.querySelector(".popup__capture");
+
 function handleLikeIcon(evt) {
   evt.target.classList.toggle("element__like-button_liked");
 }
@@ -32,9 +35,6 @@ function deleteCard(evt) {
 }
 
 function openPreview(name, link) {
-  const popupImage = popupPreview.querySelector(".popup__image");
-  const popupCapture = popupPreview.querySelector(".popup__capture");
-
   popupImage.src = link;
   popupImage.alt = "Фотография местности: " + name;
   popupCapture.textContent = name;
