@@ -1,7 +1,6 @@
 class FormValidator {
-  constructor(config, formSelector) {
-    this._formSelector = formSelector;
-    this._formElement = document.querySelector(formSelector);
+  constructor(config, formElement) {
+    this._formElement = formElement;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;

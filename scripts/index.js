@@ -139,8 +139,8 @@ popupPreview.addEventListener("click", closePopupClickOverlay);
 popupProfile.addEventListener("click", closePopupClickOverlay);
 popupCard.addEventListener("click", closePopupClickOverlay);
 
-const editFormValidator = new FormValidator(config, ".form_type_edit-form");
-editFormValidator.enableValidation();
+const profileFormValidator = new FormValidator(config, formElementProfile);
+profileFormValidator.enableValidation();
 
-const addFormValidator = new FormValidator(config, ".form_type_add-form");
-addFormValidator.enableValidation();
+const cardFormValidator = new FormValidator(config, formElementCard);
+cardFormValidator.enableValidation();
