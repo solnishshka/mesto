@@ -1,5 +1,3 @@
-import { config } from "./data.js";
-
 class FormValidator {
   constructor(config, formSelector) {
     this._formSelector = formSelector;
