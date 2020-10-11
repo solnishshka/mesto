@@ -31,23 +31,27 @@ function renderCards() {
   });
 }
 
+function clearError() {
+  if (document.querySelectorAll(`.${config.inputErrorClass}`)) {
+    document.querySelectorAll(`.${config.inputErrorClass}`).forEach((errorItem) => {
+      errorItem.classList.remove(config.inputErrorClass);
+      document.querySelector(`#${errorItem.id}-error`).textContent = "";
+      document
+        .querySelector(`#${errorItem.id}-error`)
+        .classList.remove(config.errorClass);
+    });
+  }
+}
+
 export function openPopup(popupName) {
   popupName.classList.add("popup_opened");
-  document.addEventListener("keydown", closePopupPressEscape);
+  document.addEventListener("keyup", closePopupPressEscape);
 }
 
 export function closePopup(popupName) {
   popupName.classList.remove("popup_opened");
-  document.removeEventListener("keydown", closePopupPressEscape);
-  if (document.querySelectorAll(".form__item_type_error")) {
-    document.querySelectorAll(".form__item_type_error").forEach((errorItem) => {
-      errorItem.classList.remove("form__item_type_error");
-      document.querySelector(`#${errorItem.id}-error`).textContent = "";
-      document
-        .querySelector(`#${errorItem.id}-error`)
-        .classList.remove("form__item-error_visible");
-    });
-  }
+  document.removeEventListener("keyup", closePopupPressEscape);
+  clearError();
 }
 
 function handleSubmitProfile(evt) {
@@ -89,18 +93,11 @@ function closePopupClickOverlay(evt) {
 }
 
 function closePopupPressEscape(evt) {
+  const popupOpen = document.querySelector(".popup_opened");
   if (evt.key === "Escape") {
-    switch (document.querySelector(".popup_opened")) {
-      case popupCard:
-        closePopup(popupCard);
-        formElementCard.reset();
-        break;
-      case popupProfile:
-        closePopup(popupProfile);
-        break;
-      case popupPreview:
-        closePopup(popupPreview);
-        break;
+    closePopup(popupOpen);
+    if (popupOpen === popupCard) {
+      formElementCard.reset();
     }
   }
 }
