@@ -31,11 +31,6 @@ function renderCards() {
   });
 }
 
-/*initialCards.forEach((item) => {
-  const card = new Card(item, "#card");
-  cardContainer.append(card.createNewCard());
-});*/
-
 export function openPopup(popupName) {
   popupName.classList.add("popup_opened");
   document.addEventListener("keydown", closePopupPressEscape);
