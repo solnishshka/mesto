@@ -71,5 +71,3 @@ export const cardTitle = formElementCard.querySelector(".form__item_el_title");
 export const cardLink = formElementCard.querySelector(".form__item_el_link");
 export const profileTitle = document.querySelector(".profile__title");
 export const profileSubtitle = document.querySelector(".profile__subtitle");
-
-export const cardTemplate = document.querySelector("#card").content;
