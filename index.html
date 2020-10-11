@@ -7,6 +7,7 @@
     <meta name="author" content="Solnishshka" />
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
     <title>Mesto - узнайте больше о самых красивых уголках планеты</title>
+    <script type="module" src="./scripts/index.js" defer></script>
   </head>
   <body class="page">
     <div class="page__container">
@@ -57,7 +58,7 @@
             type="button"
             aria-label="Закрыть"
           ></button>
-          <form class="form" name="saveForm" novalidate>
+          <form class="form form_type_edit-form" name="saveForm" novalidate>
             <h2 class="form__title">Редактировать профиль</h2>
             <input
               type="text"
@@ -93,7 +94,7 @@
             type="button"
             aria-label="Закрыть"
           ></button>
-          <form class="form" name="saveForm" novalidate>
+          <form class="form form_type_add-form" name="saveForm" novalidate>
             <h2 class="form__title">Новое место</h2>
             <input
               type="text"
@@ -153,9 +154,5 @@
         </div>
       </div>
     </template>
-
-    <script src="./scripts/cards.js"></script>
-    <script src="./scripts/validate.js"></script>
-    <script src="./scripts/script.js"></script>
   </body>
 </html>
