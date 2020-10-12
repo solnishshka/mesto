@@ -48,14 +48,6 @@ export const popupPreview = document.querySelector(
   ".popup_theme_preview-image"
 );
 
-export const closeButtonProfile = popupProfile.querySelector(
-  ".popup__close-button"
-);
-export const closeButtonCard = popupCard.querySelector(".popup__close-button");
-export const closeButtonPreview = popupPreview.querySelector(
-  ".popup__close-button"
-);
-
 export const cardContainer = document.querySelector(".elements");
 
 export const formElementProfile = popupProfile.querySelector(".form");
