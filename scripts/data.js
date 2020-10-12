@@ -48,6 +48,8 @@ export const popupPreview = document.querySelector(
   ".popup_theme_preview-image"
 );
 
+export const closeButtonPreview = popupPreview.querySelector('.popup__close-button');
+
 export const cardContainer = document.querySelector(".elements");
 
 export const formElementProfile = popupProfile.querySelector(".form");
