@@ -1,11 +1,9 @@
-import { popupPreview, closeButtonPreview } from "./data.js";
-import { closePopup, openPopup } from "./index.js";
-
-class Card {
-  constructor(data, formSelector) {
+export default class Card {
+  constructor(data, formSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._formSelector = formSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -39,17 +37,6 @@ class Card {
     this._element.remove();
   }
 
-  _openPreview() {
-    const popupImage = popupPreview.querySelector(".popup__image");
-    const popupCapture = popupPreview.querySelector(".popup__capture");
-
-    popupImage.src = this._link;
-    popupImage.alt = "Фотография местности: " + this._name;
-    popupCapture.textContent = this._name;
-
-    openPopup(popupPreview);
-  }
-
   _setEventListeners() {
     this._element
       .querySelector(".element__like-button")
@@ -66,13 +53,7 @@ class Card {
     this._element
       .querySelector(".element__image")
       .addEventListener("click", () => {
-        this._openPreview();
+        this._handleCardClick();
       });
-
-    closeButtonPreview.addEventListener("click", () => {
-      closePopup(popupPreview);
-    });
   }
 }
-
-export default Card;

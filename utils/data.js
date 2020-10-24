@@ -42,18 +42,23 @@ export const config = {
 export const editButton = document.querySelector(".profile__edit-button");
 export const addButton = document.querySelector(".profile__add-button");
 
-export const popupProfile = document.querySelector(".popup_theme_edit-profile");
-export const popupCard = document.querySelector(".popup_theme_add-card");
-export const popupPreview = document.querySelector(
-  ".popup_theme_preview-image"
-);
+export const popupProfileSelector = ".popup_theme_edit-profile";
+export const popupCardSelector = ".popup_theme_add-card";
+export const popupPreviewSelector = ".popup_theme_preview-image";
 
-export const closeButtonPreview = popupPreview.querySelector('.popup__close-button');
+export const closeButtonPreview = document
+  .querySelector(popupPreviewSelector)
+  .querySelector(".popup__close-button");
 
 export const cardContainer = document.querySelector(".elements");
+export const cardContainerSelector = ".elements";
 
-export const formElementProfile = popupProfile.querySelector(".form");
-export const formElementCard = popupCard.querySelector(".form");
+export const formElementProfile = document
+  .querySelector(popupProfileSelector)
+  .querySelector(".form");
+export const formElementCard = document
+  .querySelector(popupCardSelector)
+  .querySelector(".form");
 
 export const nameInput = formElementProfile.querySelector(
   ".form__item_el_name"
@@ -63,5 +68,7 @@ export const jobInput = formElementProfile.querySelector(
 );
 export const cardTitle = formElementCard.querySelector(".form__item_el_title");
 export const cardLink = formElementCard.querySelector(".form__item_el_link");
-export const profileTitle = document.querySelector(".profile__title");
-export const profileSubtitle = document.querySelector(".profile__subtitle");
+export const profileSelector = {
+  nameSelector: ".profile__title",
+  jobSelector: ".profile__subtitle",
+};
