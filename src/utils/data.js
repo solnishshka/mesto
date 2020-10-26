@@ -46,11 +46,6 @@ export const popupProfileSelector = ".popup_theme_edit-profile";
 export const popupCardSelector = ".popup_theme_add-card";
 export const popupPreviewSelector = ".popup_theme_preview-image";
 
-export const closeButtonPreview = document
-  .querySelector(popupPreviewSelector)
-  .querySelector(".popup__close-button");
-
-export const cardContainer = document.querySelector(".elements");
 export const cardContainerSelector = ".elements";
 
 export const formElementProfile = document
@@ -66,8 +61,7 @@ export const nameInput = formElementProfile.querySelector(
 export const jobInput = formElementProfile.querySelector(
   ".form__item_el_position"
 );
-export const cardTitle = formElementCard.querySelector(".form__item_el_title");
-export const cardLink = formElementCard.querySelector(".form__item_el_link");
+
 export const profileSelector = {
   nameSelector: ".profile__title",
   jobSelector: ".profile__subtitle",

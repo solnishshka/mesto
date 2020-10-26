@@ -1,3 +1,5 @@
+import "./index.css";
+
 import {
   initialCards,
   editButton,
@@ -20,13 +22,6 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-
-/*function renderCards() {
-  initialCards.forEach((item) => {
-    const card = new Card(item, "#card");
-    cardContainer.append(card.createNewCard());
-  });
-}*/
 
 const popupPreview = new PopupWithImage(popupPreviewSelector);
 
@@ -67,20 +62,6 @@ const popupProfile = new PopupWithForm(popupProfileSelector, () => {
   );
   popupProfile.close();
 });
-
-function clearError() {
-  if (document.querySelectorAll(`.${config.inputErrorClass}`)) {
-    document
-      .querySelectorAll(`.${config.inputErrorClass}`)
-      .forEach((errorItem) => {
-        errorItem.classList.remove(config.inputErrorClass);
-        document.querySelector(`#${errorItem.id}-error`).textContent = "";
-        document
-          .querySelector(`#${errorItem.id}-error`)
-          .classList.remove(config.errorClass);
-      });
-  }
-}
 
 defaultCards.renderItems();
 popupCard.setEventListeners();
