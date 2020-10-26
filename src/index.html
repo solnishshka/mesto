@@ -55,7 +55,7 @@
             type="button"
             aria-label="Закрыть"
           ></button>
-          <form class="form form_type_edit-form" name="saveForm" novalidate>
+          <form class="form form_type_edit-form" name="editForm" novalidate>
             <h2 class="form__title">Редактировать профиль</h2>
             <input
               type="text"
@@ -91,11 +91,11 @@
             type="button"
             aria-label="Закрыть"
           ></button>
-          <form class="form form_type_add-form" name="saveForm" novalidate>
+          <form class="form form_type_add-form" name="addForm" novalidate>
             <h2 class="form__title">Новое место</h2>
             <input
               type="text"
-              name="cardTitle"
+              name="name"
               placeholder="Название места"
               class="form__item form__item_el_title"
               id="cardTitle"
@@ -106,7 +106,7 @@
             <span class="form__item-error" id="cardTitle-error"></span>
             <input
               type="url"
-              name="cardLink"
+              name="link"
               placeholder="Ссылка на картинку"
               class="form__item form__item_el_link"
               id="cardLink"

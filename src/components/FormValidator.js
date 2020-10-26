@@ -75,6 +75,17 @@ export default class FormValidator {
     });
   }
 
+  clearForm() {
+    if (this._formElement.querySelectorAll(`.${this._inputErrorClass}`)) {
+      this._formElement
+        .querySelectorAll(`.${this._inputErrorClass}`)
+        .forEach((errorItem) => {
+          this._hideInputError(errorItem);
+        });
+      this._disableSaveButton();
+    }
+  }
+
   enableValidation() {
     this._formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();

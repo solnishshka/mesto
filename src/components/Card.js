@@ -1,7 +1,7 @@
 export default class Card {
-  constructor(data, formSelector, handleCardClick) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor({link, name}, formSelector, handleCardClick) {
+    this._name = name;
+    this._link = link;
     this._formSelector = formSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -35,6 +35,7 @@ export default class Card {
 
   _deleteCard() {
     this._element.remove();
+    this._element.innerHTML = "";
   }
 
   _setEventListeners() {

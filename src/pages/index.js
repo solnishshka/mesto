@@ -23,6 +23,17 @@ import UserInfo from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 
+function createCard(cardData) {
+  const card = new Card(cardData, "#card", () => {
+    popupPreview.open(cardData);
+  });
+
+  return card.createNewCard();
+}
+
+const profileFormValidator = new FormValidator(config, formElementProfile);
+const cardFormValidator = new FormValidator(config, formElementCard);
+
 const popupPreview = new PopupWithImage(popupPreviewSelector);
 
 const userData = new UserInfo(profileSelector);
@@ -31,35 +42,22 @@ const defaultCards = new Section(
   {
     data: initialCards,
     renderer: (item) => {
-      const card = new Card(item, "#card", () => {
-        popupPreview.open(item);
-      });
-      const cardElement = card.createNewCard();
-      defaultCards.addItem(cardElement);
+      defaultCards.addItem(createCard(item));
     },
   },
   cardContainerSelector
 );
 
 const popupCard = new PopupWithForm(popupCardSelector, () => {
-  const cardData = {
-    name: popupCard._getInputValues()[0],
-    link: popupCard._getInputValues()[1],
-  };
-  const card = new Card(cardData, "#card", () => {
-    popupPreview.open(cardData);
-  });
+  const cardData = popupCard._getInputValues();
 
-  defaultCards.addItem(card.createNewCard());
+  defaultCards.addItem(createCard(cardData));
 
   popupCard.close();
 });
 
 const popupProfile = new PopupWithForm(popupProfileSelector, () => {
-  userData.setUserInfo(
-    popupProfile._getInputValues()[0],
-    popupProfile._getInputValues()[1]
-  );
+  userData.setUserInfo(popupProfile._getInputValues());
   popupProfile.close();
 });
 
@@ -69,17 +67,16 @@ popupPreview.setEventListeners();
 popupProfile.setEventListeners();
 
 editButton.addEventListener("click", () => {
+  profileFormValidator.clearForm();
   nameInput.value = userData.getUserInfo().name;
   jobInput.value = userData.getUserInfo().job;
   popupProfile.open();
 });
 
 addButton.addEventListener("click", function () {
+  cardFormValidator.clearForm();
   popupCard.open();
 });
 
-const profileFormValidator = new FormValidator(config, formElementProfile);
 profileFormValidator.enableValidation();
-
-const cardFormValidator = new FormValidator(config, formElementCard);
 cardFormValidator.enableValidation();

@@ -10,30 +10,15 @@ export default class PopupWithForm extends Popup {
 
   _getInputValues() {
     const inputValues = {};
-    this._inputList.forEach((input, i) => {
-      inputValues[i] = input.value;
+    this._inputList.forEach((input) => {
+      inputValues[input.name] = input.value;
     });
     return inputValues;
-  }
-
-  _clearErrorValidation() {
-    if (this._formElement.querySelectorAll(`.form__item_type_error`)) {
-        this._formElement
-          .querySelectorAll(`.form__item_type_error`)
-          .forEach((errorItem) => {
-            errorItem.classList.remove("form__item_type_error");
-            document.querySelector(`#${errorItem.id}-error`).textContent = "";
-            document
-              .querySelector(`#${errorItem.id}-error`)
-              .classList.remove("form__item-error_visible");
-          });
-      }
   }
 
   close() {
     super.close();
     this._formElement.reset();
-    this._clearErrorValidation();
   }
 
   setEventListeners() {
