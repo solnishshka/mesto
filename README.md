@@ -4,7 +4,7 @@
 
 Проект о красивых местах России.
 
-* [Ссылка на проект](https://solnishshka.github.io/mesto/dist/index.html)
+* [Ссылка на проект](https://solnishshka.github.io/mesto/dist/)
 
 ### Технологии, которые применялись в проекте
 
