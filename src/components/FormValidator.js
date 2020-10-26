@@ -76,12 +76,11 @@ export default class FormValidator {
   }
 
   clearForm() {
-    if (this._formElement.querySelectorAll(`.${this._inputErrorClass}`)) {
-      this._formElement
-        .querySelectorAll(`.${this._inputErrorClass}`)
-        .forEach((errorItem) => {
-          this._hideInputError(errorItem);
-        });
+    const errorItems = this._formElement.querySelectorAll(`.${this._inputErrorClass}`);
+    if (errorItems) {
+      errorItems.forEach((errorItem) => {
+        this._hideInputError(errorItem);
+      });
       this._disableSaveButton();
     }
   }
