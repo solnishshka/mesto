@@ -49,7 +49,7 @@ const defaultCards = new Section(
 );
 
 const popupCard = new PopupWithForm(popupCardSelector, () => {
-  const cardData = popupCard._getInputValues();
+  const cardData = popupCard.getInputValues();
 
   defaultCards.addItem(createCard(cardData));
 
@@ -57,7 +57,7 @@ const popupCard = new PopupWithForm(popupCardSelector, () => {
 });
 
 const popupProfile = new PopupWithForm(popupProfileSelector, () => {
-  userData.setUserInfo(popupProfile._getInputValues());
+  userData.setUserInfo(popupProfile.getInputValues());
   popupProfile.close();
 });
 
