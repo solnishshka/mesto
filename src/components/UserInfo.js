@@ -5,7 +5,7 @@ export default class UserInfo {
     this._avatarElement = document.querySelector(avatarSelector);
   }
 
-  getUserInfo({name, about, _id, avatar}) {
+  getUserInfo({ name, about, _id, avatar }) {
     this.name = name;
     this.job = about;
     this.id = _id;

@@ -76,7 +76,9 @@ export default class FormValidator {
   }
 
   clearForm() {
-    const errorItems = this._formElement.querySelectorAll(`.${this._inputErrorClass}`);
+    const errorItems = this._formElement.querySelectorAll(
+      `.${this._inputErrorClass}`
+    );
     if (errorItems) {
       errorItems.forEach((errorItem) => {
         this._hideInputError(errorItem);

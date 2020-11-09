@@ -51,21 +51,21 @@ export default class Api {
   deleteCard(id) {
     return fetch(`${this._url}/cards/${id}`, {
       method: "DELETE",
-      headers: this._headers
-    })
+      headers: this._headers,
+    });
   }
 
   setLike(id) {
-      return fetch(`${this._url}/cards/likes/${id}`, {
-        method: 'PUT',
-        headers: this._headers
-      });
+    return fetch(`${this._url}/cards/likes/${id}`, {
+      method: "PUT",
+      headers: this._headers,
+    });
   }
 
   deleteLike(id) {
     return fetch(`${this._url}/cards/likes/${id}`, {
-      method: 'DELETE',
-      headers: this._headers
-    })
+      method: "DELETE",
+      headers: this._headers,
+    });
   }
-} 
+}

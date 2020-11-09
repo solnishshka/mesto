@@ -16,7 +16,7 @@ import {
   nameInput,
   jobInput,
   config,
-  cardContainerSelector
+  cardContainerSelector,
 } from "../utils/data.js";
 
 import Card from "../components/Card.js";
@@ -49,11 +49,15 @@ const api = new Api({
 const userData = new UserInfo(profileSelector);
 
 const popupDeleteApply = new PopupApplyDelete(popupApplyDeleteSelector);
+const popupPreview = new PopupWithImage(popupPreviewSelector);
 
-popupDeleteApply.setEventListeners();
+const profileFormValidator = new FormValidator(config, formElementProfile);
+const cardFormValidator = new FormValidator(config, formElementCard);
+const avatarFormValidator = new FormValidator(config, formElementAvatar);
 
 function renderUserData() {
-  api.getUserInfo()
+  api
+    .getUserInfo()
     .then((result) => {
       if (result.ok) {
         return result.json();
@@ -63,46 +67,59 @@ function renderUserData() {
       userData.getUserInfo(data);
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
     })
     .finally(() => {
       userData.setUserInfo();
     });
 }
 
-renderUserData();
-
-function renderInitialCards() {
-  api.getInitialCards()
-    .then((result) => {
-      if (result.ok) {
-        return result.json();
-      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
-    })
-    .then((cards) => {
-        cards.forEach((card) => {
-          defaultCards.addItem(createCard(card));
-        })
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+function changeLikeStatus(id, isLike, card) {
+  if (isLike) {
+    api
+      .deleteLike(id)
+      .then((result) => {
+        if (result.ok) {
+          return result.json();
+        } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
+      })
+      .then((res) => {
+        card.like = res.likes.length;
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        card.isLike = false;
+        card.handleLikeIcon();
+      });
+  } else {
+    api
+      .setLike(id)
+      .then((result) => {
+        if (result.ok) {
+          return result.json();
+        } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
+      })
+      .then((res) => {
+        card.like = res.likes.length;
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        card.isLike = true;
+        card.handleLikeIcon();
+      });
+  }
 }
-
-renderInitialCards();
 
 function createCard(cardData) {
   if (cardData.likes.length !== 0) {
     cardData.likes.forEach((like) => {
       if (like._id === userData.id) {
         cardData.isLike = true;
-      }
-      else {
+      } else {
         cardData.isLike = false;
       }
     });
-  }
-  else {
+  } else {
     cardData.isLike = false;
   }
 
@@ -124,7 +141,8 @@ function createCard(cardData) {
     (id) => {
       popupDeleteApply.open();
       popupDeleteApply.setSubmitCallback(() => {
-        api.deleteCard(id)
+        api
+          .deleteCard(id)
           .then((result) => {
             if (result.ok) {
               return result.json();
@@ -136,61 +154,58 @@ function createCard(cardData) {
           .finally(() => {
             card.deleteCard();
             popupDeleteApply.close();
-          })
-      })   
+          });
+      });
     },
     (id, isLike) => {
-      changeLikeInfo(id, isLike, card);
+      changeLikeStatus(id, isLike, card);
     }
   );
   return card.createNewCard();
 }
 
-function changeLikeInfo (id, isLike, card) {
-  if (isLike) {
-    api.deleteLike(id)
-      .then((result) => {
-        if (result.ok) {
-          return result.json();
-        } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
-      })
-      .then((res) => {
-        card.like = res.likes.length;
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        card.isLike = false;
-        card.handleLikeIcon();
-      })
-  }
-  else {
-    api.setLike(id)
-      .then((result) => {
-        if (result.ok) {
-          return result.json();
-        } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
-      })
-      .then((res) => {
-        card.like = res.likes.length;
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        card.isLike = true;
-        card.handleLikeIcon();
-      })
+function renderInitialCards() {
+  api
+    .getInitialCards()
+    .then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    })
+    .then((cards) => {
+      cards.forEach((card) => {
+        defaultCards.addItem(createCard(card));
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function renderLoadingProfile(isLoading, popupSelector) {
+  const submitButton = document
+    .querySelector(popupSelector)
+    .querySelector(".form__submit-button");
+
+  if (isLoading) {
+    submitButton.textContent = "Сохранение...";
+  } else {
+    if (
+      popupSelector === popupProfileSelector ||
+      popupSelector === popupAvatarSelector
+    ) {
+      submitButton.textContent = "Сохранить";
+    } else {
+      submitButton.textContent = "Создать";
+    }
   }
 }
 
-const profileFormValidator = new FormValidator(config, formElementProfile);
-const cardFormValidator = new FormValidator(config, formElementCard);
-const avatarFormValidator = new FormValidator(config, formElementAvatar);
-
-const popupPreview = new PopupWithImage(popupPreviewSelector);
-
 const popupCard = new PopupWithForm(popupCardSelector, () => {
   const cardData = popupCard.getInputValues();
-
-  api.addNewCard(cardData)
+  renderLoadingProfile(true, popupCardSelector);
+  api
+    .addNewCard(cardData)
     .then((result) => {
       if (result.ok) {
         return result.json();
@@ -203,49 +218,55 @@ const popupCard = new PopupWithForm(popupCardSelector, () => {
       console.log(err);
     })
     .finally(() => {
+      renderLoadingProfile(false, popupCardSelector);
       popupCard.close();
-    }); 
+    });
 });
 
 const popupProfile = new PopupWithForm(popupProfileSelector, () => {
-  api.setUserInfo(popupProfile.getInputValues())
-  .then((result) => {
-    if (result.ok) {
-      return result.json();
-    } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-  .finally(() => {
-    popupProfile.close();
-    renderUserData();
-  });
+  renderLoadingProfile(true, popupProfileSelector);
+  api
+    .setUserInfo(popupProfile.getInputValues())
+    .then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${result.status}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      renderLoadingProfile(false, popupProfileSelector);
+      popupProfile.close();
+      renderUserData();
+    });
 });
 
 const popupEditAvatar = new PopupWithForm(popupAvatarSelector, () => {
-  api.setUserAvatar(popupEditAvatar.getInputValues())
-  .then((result) => {
-    if (result.ok) {
-      return result.json();
-    } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-  .finally(() => {
-    popupEditAvatar.close();
-    renderUserData();
-  });
+  renderLoadingProfile(true, popupAvatarSelector);
+  api
+    .setUserAvatar(popupEditAvatar.getInputValues())
+    .then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      renderLoadingProfile(false, popupAvatarSelector);
+      popupEditAvatar.close();
+      renderUserData();
+    });
 });
 
-//добавляем слушатели для попапов
 popupCard.setEventListeners();
 popupPreview.setEventListeners();
 popupProfile.setEventListeners();
 popupEditAvatar.setEventListeners();
+popupDeleteApply.setEventListeners();
 
-//добавляем слушатели для кнопок редактирования
 editButton.addEventListener("click", () => {
   profileFormValidator.clearForm();
   nameInput.value = userData.name;
@@ -263,12 +284,9 @@ editAvatarButton.addEventListener("click", function () {
   popupEditAvatar.open();
 });
 
-//включаем валидацию для форм
+renderUserData();
+renderInitialCards();
+
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
-
-//api.changeLikeInfo('5fa92007fca8c000111d981f', true)
-  //.then((res) => {
-   //console.log(res);
-  //})
