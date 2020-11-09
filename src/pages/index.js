@@ -140,7 +140,6 @@ function createCard(cardData) {
       })   
     },
     (id, isLike) => {
-      console.log(card);
       changeLikeInfo(id, isLike, card);
     }
   );
