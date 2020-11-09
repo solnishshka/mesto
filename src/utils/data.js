@@ -1,4 +1,4 @@
-export const initialCards = [
+/*export const initialCards = [
   {
     name: "Архыз",
     link:
@@ -29,7 +29,7 @@ export const initialCards = [
     link:
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
-];
+];*/
 
 export const config = {
   inputSelector: ".form__item",
@@ -41,10 +41,13 @@ export const config = {
 
 export const editButton = document.querySelector(".profile__edit-button");
 export const addButton = document.querySelector(".profile__add-button");
+export const editAvatarButton = document.querySelector(".profile__avatar");
 
 export const popupProfileSelector = ".popup_theme_edit-profile";
 export const popupCardSelector = ".popup_theme_add-card";
 export const popupPreviewSelector = ".popup_theme_preview-image";
+export const popupAvatarSelector = ".popup_theme_edit-avatar";
+export const popupApplyDeleteSelector = ".popup_theme_apply-delete";
 
 export const cardContainerSelector = ".elements";
 
@@ -53,6 +56,9 @@ export const formElementProfile = document
   .querySelector(".form");
 export const formElementCard = document
   .querySelector(popupCardSelector)
+  .querySelector(".form");
+export const formElementAvatar = document
+  .querySelector(popupAvatarSelector)
   .querySelector(".form");
 
 export const nameInput = formElementProfile.querySelector(
@@ -65,4 +71,7 @@ export const jobInput = formElementProfile.querySelector(
 export const profileSelector = {
   nameSelector: ".profile__title",
   jobSelector: ".profile__subtitle",
+  avatarSelector: ".profile__avatar"
 };
+
+export const profileAvatar = document.querySelector('.profile__avatar');
