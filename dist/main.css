@@ -23,7 +23,7 @@
 .element__like-button_liked{background-image:url(75438e944a43e4c0b404a3fd95e002f1.svg)}
 .element__delete-button{position:absolute;background-color:transparent;background-image:url(a274c87c0f6b553b47ad3aa5ed58a113.svg);background-size:contain;background-repeat:no-repeat;outline:none;top:18px;right:15px;width:18px;padding-bottom:20px;border:none}.element__delete-button:hover{opacity:.6;cursor:pointer;transition:opacity .5s linear 0s}
 .element__like{margin-right:22px;margin-left:auto;margin-top:21px;display:flex;flex-direction:column;align-items:center}
-.element__like-count{color:#000;margin:3px 0 0}
+.element__like-count{color:#000;margin:3px 0 0;font-size:13px;line-height:1.21}
 .element__delete-button_hidden{visibility:hidden}
 .popup{position:fixed;top:0;left:0;right:0;bottom:0;display:flex;justify-content:center;align-items:center;min-width:320px;background-color:rgba(0,0,0,.5);visibility:hidden;opacity:0;transition:visibility .1s,opacity .5s linear,background-color .5s linear 0s}
 .popup__container{max-width:430px;background-color:#fff;position:fixed;box-sizing:border-box;padding:36px;display:flex;flex-direction:column;border-radius:10px}@media screen and (max-width:700px){.popup__container{width:75%;min-width:240px;padding:30px 20px}}
