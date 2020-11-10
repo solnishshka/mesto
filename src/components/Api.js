@@ -7,12 +7,20 @@ export default class Api {
   getInitialCards() {
     return fetch(`${this._url}/cards`, {
       headers: this._headers,
+    }).then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
     });
   }
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       headers: this._headers,
+    }).then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
     });
   }
 
@@ -24,6 +32,10 @@ export default class Api {
         name: userName,
         about: userJob,
       }),
+    }).then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
     });
   }
 
@@ -34,6 +46,10 @@ export default class Api {
       body: JSON.stringify({
         avatar: avatarLink,
       }),
+    }).then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
     });
   }
 
@@ -45,6 +61,10 @@ export default class Api {
         name: name,
         link: link,
       }),
+    }).then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
     });
   }
 
@@ -52,6 +72,10 @@ export default class Api {
     return fetch(`${this._url}/cards/${id}`, {
       method: "DELETE",
       headers: this._headers,
+    }).then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
     });
   }
 
@@ -59,6 +83,10 @@ export default class Api {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: "PUT",
       headers: this._headers,
+    }).then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
     });
   }
 
@@ -66,6 +94,10 @@ export default class Api {
     return fetch(`${this._url}/cards/likes/${id}`, {
       method: "DELETE",
       headers: this._headers,
+    }).then((result) => {
+      if (result.ok) {
+        return result.json();
+      } else return Promise.reject(`Что-то пошло не так: ${res.status}`);
     });
   }
 }
